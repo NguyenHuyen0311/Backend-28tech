@@ -1,0 +1,72 @@
+28tech—CSS: Cascading Style Sheets
+*Dùng để làm đẹp cho HTML
+*Cú pháp:
+selector {
+        property: value;
+}
+Trong đó: 
++selector: bộ chọn
++property: thuộc tính
++value: giá trị của thuộc tính
+✊Selectors (Bộ chọn): 5 loại
+✨-Simple selectors (Bộ chọn đơn giản): 
++Bộ chọn element (element selector): Chọn các phần tử dựa trên tên phần tử
++Bộ chọn id (id selector): Chọn các phần tử dựa trên thuộc tính id
++Bộ chọn class (class selector): Chọn các phần tử dựa trên thuộc tính class
++Bộ chọn chung (universal selector): Chọn tất cả các phần tử
++ Bộ chọn nhóm (grouping selector): Chọn all các phần tử, id, class có cùng thuộc tính và giá trị thuộc tính
+✨-Combinator selectors (Bộ chọn tổ hợp)
++Adjacent sibling selectors (Bộ chọn anh chị em liền kề): Chọn phần tử c được đặt cùng cấp và phải kề ngày sau phần tử b👉b+c{}
++General sibling selectors (Bộ chọn anh chị em chung): Chọn all các phần tử c cùng cấp với phần tử b, và những phần tử c phải nằm sau phần tử b
+👉b~c{}
++Child selectors (Bộ chọn con): Chọn all phần tử b là cấp con đầu tiên (cấp 1) của phần tử a
+👉a>b{}
++Descendant selectors (Bộ chọn hậu duệ): Chọn all các phần tử b bên trong phần tử a
+👉a b{}
+✨-Pseudo-class selectors (Bộ chọn lớp giả)
+✨-Pseudo-elements selectors (Bộ chọn phần tử giả)
+✨-Attribute selectors (Bộ chọn thuộc tính)
+✊Ba kiểu chèn CSS 
++Inline CSS (Nội tuyến): Thêm thuộc tính style vào trong phần tử mà muốn sửa CSS
++Internal CSS (Nội bộ): Thêm thẻ <style> vào bất cứ đâu trong file html
++External CSS (Bên ngoài): Thêm một file CSS, sau đó dùng thẻ <link> đặt trong <head> và chèn đường dẫn file vào thuộc tính href
+✊Colors, Backgrounds
+*Colors
+-Phần mềm lấy mã màu nhanh: Just Color Picker (ấn Alt+X để lấy mã màu)
+-2 cách sử dụng: 
++đặt tên sẵn: white, black, red….
++hex: #RRGGBB (red, green, blue)
+*Background (nền): thêm nền vào cho phần tử
+✊Box Model (Mô hình hộp): All element có thể được coi là các cái hộp
+*Hộp bao gồm: 
++Content: nội dung của element
++Padding: khoảng cách giữa content và border
++Border: đường viền bao quanh padding và nội dung
++Margin: khoảng cách giữa các element
+*Borders (Đường viền): một số kiểu border
+•dotted: đường viền chấm
+•dashed: đường viền nét đứt
+•solid: đường viền liền
+*Padding: tạo một khoảng trống xung quang nội dung và nằm bên trong đường viền
+*Margin: khoảng cách giữa phần tử này với phần tử khác, nằm bên ngoài border
+✊Text, Fonts, Icons
+-Text
++color: màu chữ
++text-align: dùng để thiết lập căn lề ngang cho văn bản 
+👉left, right, center, justify (căn đều 2 bên)
++text-transform: dùng để chỉ định chữ hoa hoặc chữ thường trong văn bản
+👉uppercase: viết hoa all
+capitalize: viết hoa các chữ đầu
+lowercase: viết thường all
+-fonts
++font-family: để chỉ định font chữ của văn bản
++font-style: để chỉ định văn bản in nghiêng
+👉normal: hiển thị bình thường
+italic: hiển thị nghiêng
++font-weight: để chỉ định độ dày của chữ
+👉normal (400), bold (600), 100, 200, 300,…,800, 900
++font-size: để chỉnh kích cỡ của chữ
+-Icons: fontawesome
+✊Display (Hiển thị)
+-inline: 
++không đặt

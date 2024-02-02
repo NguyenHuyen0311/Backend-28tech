@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="">
+    <!-- <style>
+        .d-none {
+            display: none;
+        }
+    </style>
+
+    <h1 class="title-1" id="tagH1">Quảng cáo</h1>
+    <h2 class="title-2">Nội dung thẻ h2</h2>
+    <h2 class="title-2">Nội dung thẻ h2</h2>
+    <h2 class="title-2">Nội dung thẻ h2</h2>
+    <h2 class="title-2">Nội dung thẻ h2</h2>
+    <h2>Nội dung thẻ h2</h2>
+    <h2>Nội dung thẻ h2</h2>
+    <h2>Nội dung thẻ h2</h2>
+    <h2>Nội dung thẻ h2</h2>
+
+    <p class="title-2">Nội dung thẻ h2</p> -->
+
+    <!-- DOM Element Query Selector/All -->
+    <!-- <style>
+        /* #menu li a {
+            color: black;
+        } */
+
+        /* #menu li:nth-child(3) a {
+            color: red;
+        } */
+    </style> -->
+    <!-- <ul id="menu">
+        <li><a href="#">Menu 1</a></li>
+        <li><a href="#">Menu 2</a></li>
+        <li><a href="#">Menu 3</a></li>
+        <li><a href="#">Menu 4</a></li>
+        <li><a href="#">Menu 5</a></li>
+    </ul>
+
+    <ul id="menu2">
+        <li><a href="#">Menu 1</a></li>
+        <li><a href="#">Menu 2</a></li>
+        <li><a href="#">Menu 3</a></li>
+        <li><a href="#">Menu 4</a></li>
+        <li><a href="#">Menu 5</a></li>
+    </ul> -->
+
+    <!-- DOM HTML -->
+        <!-- <h2 id="tagH2">Nội dung thẻ h2</h2> -->
+        <!-- <div id="ads"></div> -->
+
+        <!-- Lấy giá trị thuộc tính -->
+        <!-- <div class="product">
+            <p>Ảnh 1</p>
+            <p>Tiêu đề 1</p>
+            <p>Giá</p>
+            <button product-id="123">Thêm vào giỏ hàng</button>
+        </div>
+
+        <div class="product">
+            <p>Ảnh 2</p>
+            <p>Tiêu đề 2</p>
+            <p>Giá</p>
+            <button product-id="456">Thêm vào giỏ hàng</button>
+        </div> -->
+
+        <!-- Thay đổi giá trị thuộc tính -->
+        <!-- <style>
+            body.dark {
+                background-color: #000;
+            }
+
+            body.dark h2 {
+                color: #fff;
+            }
+        </style>
+        <h2>Nội dung...</h2>
+
+        <button id="change-mode">Sáng/Tối</button> -->
+
+    <!-- DOM CSS -->
+        <!-- <h2 id="tagH2">Nội dung thẻ h2</h2> -->
+
+    <!-- DOM Nodes -->
+        <!-- appendChild()  -->
+            <!-- <ul id="menu">
+                <li><input /></li>
+                <li><input /></li>
+                <li><input /></li>
+            </ul>
+
+            <button id="button-add">Add</button>
+
+            <script>
+                const buttonAdd = document.querySelector("#button-add");
+                const menu = document.querySelector("#menu");
+
+                buttonAdd.addEventListener("click", () => {
+                    const li = document.createElement("li");
+                    li.innerHTML = "<input />";
+
+                    menu.appendChild(li);
+                });
+            </script> -->
+
+        <!-- insertBefore() -->
+            <!-- <ul id="menu">
+                <li>Mục 1</li>
+                <li>Mục 2</li>
+                <li>Mục 3</li>
+            </ul>
+            <button id="button-add">Add</button>
+
+            <script>
+                const buttonAdd = document.querySelector("#button-add");
+                const menu = document.querySelector("menu");
+                let counter = 4;
+
+                buttonAdd.addEventListener("click", () => {
+                    const firstLi = document.querySelector("#menu li:nth-child(1)");
+                    const li = document.createElement("li");
+                    li.innerHTML = "Item mới" + counter;
+
+                    menu.insertBefore(li, firstLi);
+                    counter++;
+                });
+            </script> -->
+
+        <!-- removeChild() -->
+            <!-- <ul id="menu">
+                <li> Mục 1 <button>Xóa</button></li>
+                <li> Mục 2 <button>Xóa</button></li>
+                <li> Mục 3 <button>Xóa</button></li>
+            </ul>
+
+            <script>
+                const buttons = document.querySelectorAll("#menu li button");
+                const menu = document.querySelector("#menu");
+
+                buttons.forEach((button) => {
+                    button.addEventListener("click", () => {
+                        const li = button.parentNode;
+                        menu.removeChild(li);
+                    });
+                });
+            </script> -->
+
+        <!-- replaceChild() -->
+            <!-- <ul id="menu">
+                <li>Mục 1</li>
+                <li>Mục 2</li>
+                <li>Mục 3</li>
+            </ul>
+
+            <script>
+                const menu = document.querySelector("#menu");
+
+                const listLi = document.querySelectorAll("#menu li");
+                listLi.forEach(li => {
+                    li.addEventListener("click", () => {
+                        const newLi = document.createElement("li");
+                        newLi.innerHTML = "Thẻ li mới";
+
+                        menu.replaceChild(newLi, li);
+                    });
+                });
+            </script> -->
+
+    <!-- Bài tập -->
+        <!-- Bài 2: Sử dụng setTimeout để làm mờ thông báo sau một khoảng thời gian -->
+            <!-- <style>
+                .notification {
+                    background-color: #66b347;
+                    display: inline-block;
+                    position: fixed;
+                    top: 10px;
+                    right: 10px;
+                    padding: 10px 20px;
+                    border-radius: 8px;
+                }
+            </style>
+
+            <div id="notification" class="notification">
+                Thông báo
+            </div>
+
+            <script>
+                var notification = document.getElementById("notification");
+
+                function fadeOut() {
+                    var opacity = 1;
+                    var timer = setInterval(function() {
+                        if (opacity <= 0) {
+                            clearInterval(timer);
+                            notification.style.display = "none";
+                        }
+                        notification.style.opacity = opacity;
+                        opacity -= 0.1;
+                    }, 100); // Làm mờ thông báo trong 1 giây
+                }
+
+                setTimeout(fadeOut, 3000); // Sau 3 giây ẩn thông báo
+            </script> -->
+
+        <!-- Bài 5: Đổi màu nền sau một khoảng thời gian -->
+            <!-- <script>
+                setTimeout(() => {
+                    document.getElementsByTagName("body")[0].style.background = "#fecf73";
+                }, 3000);
+            </script> -->
+    <script src="t5_6.js"></script>
+</body>
+</html>

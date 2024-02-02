@@ -1,0 +1,80 @@
+28tech—Javascript NC (t1)
+🍭Scope
+-Scope là phạm vi truy cập, nó đề cập đến ngữ cảnh của đoạn code
+-Có 2 kiểu phạm vi là:
++ Phạm vi toàn cục(global): Một biến nằm ở phạm vi toàn cục thì biến đó được sử dụng ở đâu cũng được
++ Phạm vi cục bộ(local): Một biến được khai báo trong một hàm thì biến này là biến cục bộ, và chỉ sử dụng được ở trong hàm đó
+🍭Hoisting
+*Biến trong hoisting:
++ Hoisting nghĩa là có thể sử dụng 1 biến xomg sau đó mới cần khai báo biến đó
++ Javascript sẽ di chuyển toàn bộ các khai báo biến lên đầu chương trình
++ Vì vậy, những dòng code có sử dụng biến mà chưa khai báo sẽ không bị lỗi
+*Từ khoá let, const, var trong hoisting
+-Sử dụng var: Nếu biến chưa gán giá trị thì sẽ trả về undefined
+-Sử dụng let hoặc const
++ Nếu biến chưa gán giá trị thì sẽ xuất hiện thông báo lỗi “a is not defined”
++ Lỗi này muốn nói rằng biến a chưa được định nghĩa
+*Hàm trong hoisting
+-Declaration Function
++ Có tính hosting
++ Cú pháp: function tenHam() {}
+-Expression Function
++ Không có tính hosting
++ Cú pháp: var tenBien = function() {}
+-Arrow Function
++ Không có tính hoisting
++ Cú pháp: var tenBien = () => {}
+🍭Từ khoá “this”
+-This trong Javascript
++ Từ khoá this sẽ trỏ về đối tượng mà nó đang thuộc về 
+☠️Lưu ý: Nếu đặt this ở ngoài cùng chương trình thì this sẽ trả về đối tượng window
+-This trong các sự kiện javascript
+Khi gán sự kiện cho một phần tử HTML, thì this chính là phần tử HTML đó
+-This trong javascript object
+-This trong arrow function
++ Arrow function không tồn tại đối tượng this
++ Khi sử dụng this sẽ lấy đối tượng window
+🍭Modules
+*Module trong Javascript là gì?
+-Một module là một file javascript bình thường
+-File đó đặt tên có ý nghĩa dựa trên các dòng code bên trong
+-Ví dụ: file sum.js sẽ chứa hàm tính tổng bên trong
+-Công dụng: giúp code nhanh hơn, mạch lạc hơn, tái sử dụng ở nhiều nơi
+*Khai báo và sử dụng module
+-Khai báo module
++ Dùng từ khoá export
++ Cú pháp:
+export function temHam() {}
+-Sử dụng module
++ Dùng từ khoá import
++ Cú pháp:
+import { temHam } from “duong_dan_file.js”;
+*Đổi tên module
+-Có một số trường hợp bạn phải đổi tên module
++ Muốn rút gọn tên cho đỡ dài
++ Trong trường hợp source code của bạn đã tồn tại tên đó, thì phải thay đổi tên để tránh bị trùng tên
+* Đổi tên trong file module
+// Trong file module
+export { oldName as newName };
+// Trong file cần dùng đến module đó
+import { newName } from “duong_dan_file.js”;
+* Đổi tên trong file import
+import { oldName as newName } from “duong_dan_file.js”;
+*Default export module
+-Dùng để export mặc định
+-Mỗi file chỉ có 1 hàm (hoặc 1 biến) được export default
+-Cú pháp:
+// Trong file module
+export default function temHam() {}
+// Trong file cần dùng đến module đó
+import tenHam from “duong_dan_file.js”;
+🍭JSON
+*Khái niệm
+-JSON viết tắt của JavaScript Object Notation
+-Là một định dạng dữ liệu được lưu dưới dạng chuỗi
+-Chỉ cho phép các kiểu dữ liệu cơ bản: number, string, boolean, array, object, null
+-Không cho phép: function, date, undefined
+-Trường hợp giá trị của JSON là dạng Object thì:
++ Có các cặp key/value
++ key: đặt trong dấu nháy kép
++ Không có dấu phẩy ở cặp key/value cuối cùng

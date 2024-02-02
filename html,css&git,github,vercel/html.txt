@@ -1,0 +1,82 @@
+28tech—Html cơ bản
+1.Chèn link <a href=“url” target = “”> link tet </a>
+target: có 2 giá trị phổ biến
+👉_self: mặc định, mở tài liệu ở tab hiện tại 
+👉_blank: mở tài liệu trong tab mới
+2.Table
+<table>: Xác định một bảng
+<thead>: Phần đầu của bảng
+<tbody>: Phần thân của bảng
+<tr> (table row): Xác định một hàng của bảng
+<th> (table header): Xác định tiêu đề của bảng
+<td> (table data): Xác định dữ liệu ô của bảng
+✊Thuộc tính:
+-colspan: tạo ô mở rộng trên nhiều cột
+-rowspan: tạo ô kéo dài trên nhiều hàng
+3.Thẻ ul, ol, li
+<ul>: đánh dấu chấm tròn •
+<ol>: đánh số thứ tự
+✊Thuộc tính của thẻ ol: type =“1”, “A”, “a”, “I”, “i”
+<li>: một mục trong danh sách
+4.Block: luôn luôn bắt đầu trên 1 dòng mới
+*Một số thẻ dạng block:
+<div>, <h1> -> <h6>, <p>, <ul>, <ol>, <li>, <table>, <form>
+5.Inline (nội tuyến - trong hàng): chỉ xuống hàng khi hết chiều ngang
+*Một số thẻ dạng inline:
+<span>, <a>, <b>, <i>, <img>, <input>, <label>, <select>, <span>, <textarea>, <button>
+🤬Lưu ý: 
+— Phần tử kiểu inline không được chứa phần tử kiểu block mà chỉ chứa các phần tử kiểu inline, dữ liệu
+— Phần tử kiểu block thì được chứa các phần tử kiểu block, kiểu inline, dữ liệu
+— Ngoại lệ: thẻ <a> (kiểu inline) có thể chứa phần tử kiểu block
+6.Form:
+*Thuộc tính của form
+-action: xác định nơi nhận giá trị khi gửi
+-target: chỉ định nơi hiển thị phản hồi sau khi gửi
+-method: chỉ định phương thức HTTP sẽ được sử dụng khi gửi dữ liệu biểu mẫu. Có 2 phương thức
+ +GET: nối dữ liệu biểu mẫu vào URL KHÔNG BAO GIỜ sử dụng GET để gửi dữ liệu bảo mật, độ dài URL bị giới hạn 2048 ký tự
+ +POST: dữ liệu gửi đi không hiện trên URL, không giới hạn về kích thước, có thể được sử dụng để gửi một lượng lớn dữ liệu
+-autocomplete = “on” / “off”: tính tăng tự động điền, trình duyệt sẽ gợi ý các giá trị mà người dùng đã nhập trước đó
+-navalidate: không cần ktra tính chính xác dữ liệu khi gửi đi
+*Element trong form
+-<input>: hiển thị theo nhiều cách tuỳ thuộc vào thuộc tính type
+-<label>: xác định nhãn cho element trong biểu mẫu, thuộc tính for của thẻ label phải bằng thuộc tính id của element để liền kết chúng lại với nhau
+-<select>: hiển thị danh sách thả xuống (dropdown), các thẻ <option> là các tuỳ chọn để người dùng có thể chọn
++Để thay đổi lựa chọn mặc định thì thêm thuộc tính “selected” vào <option> muốn chọn mặc định
++Thuộc tính multiple ở thẻ select bấm phim ctrl để chọn nhiều
+-<textarea>: dùng để nhập nhiều dòng
+<label for=“note”>Ghi chú:</label>
+<br /> 
+<textarea id=“note” name=“note” row=“”></textarea>
+*input type =“”
+-text: nhập đoạn văn ngắn
+-email: nhập email
+-password: nhập mật khẩu
+-number: nhập số
+-date: nhập ngày tháng năm
+-time: nhập giờ, phút
+-datetime-local: nhập ngày, tháng, năm, giờ, phút
+-file: tải file lên
+-checkbox: các hộp kiểm cho phép người dùng chọn NHIỀU tuỳ chọn
+-radio: cho phép người dùng chỉ chọn MỘT trong các lựa chọn
+-submit: nút để gửi đi
+7.Thẻ video
+<video> <source> </video>
+*Thuộc tính thẻ video
+-width/height: chiều rộng và chiều cao
+-controls: thanh điều khiển
+-loop: lặp lại
+-autoplay: tự động phát
+-muted: tắt tiếng
+*Thuộc tính thẻ source
+-src: đường dẫn file
+-type: kiểu video (mp4, ogg, webm)
+8.Thẻ audio
+<audio> <source> </audio>
+*Thuộc tính thẻ audio
+-controls: thanh điều khiển
+-loop: lặp lại
+-autoplay: tự động phát
+-muted: tắt tiếng
+*Thuộc tính thẻ source
+-src
+-type: kiểu audio (mpeg - là mp3, ogg, webm, wav)
