@@ -183,12 +183,21 @@ if(formChangeMulti) {
 
             inputsChecked.forEach(input => {
                 // console.log(input.value);
-                ids.push(input.value); 
+                const id = input.value;
+
+                if(typeChange == "change-position") {
+                    const position = input.closest("tr").querySelector("input[name='position']").value; // Tìm thẻ cha tr và lấy vị trí
+                    ids.push(`${id}-${position}`); 
+                } else {
+                    ids.push(id); 
+                }
             });
 
             // console.log(ids.join(", ")); // In ra chuỗi id
 
             inputIds.value = ids.join(", "); // Insert id lên ô input
+
+            // console.log(ids);
 
             formChangeMulti.submit(); // Submit form
         } else {
