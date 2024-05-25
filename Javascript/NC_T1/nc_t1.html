@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button id="button">Click Me!</button> -->
+
+    <script src="nc_t1.js"></script>
+    
+    <!-- <script type="module" src="script1.js"></script>
+    <script type="module" src="script2.js"></script> -->
+
+    <!-- Câu 5: Tạo một menu dạng tabs, mặc định hiển thị ra tab đầu tiên. Click vào tab khác sẽ ẩn tab hiện tại và hiển thị tab mới -->
+        <!-- <style>
+            .tab {
+                overflow: hidden;
+            }
+
+            .tab-button {
+                background-color: #f1f1f1;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 10px 20px;
+                transition: 0.3s;
+            }
+
+            .tab-button:hover,
+            .tab-button.active {
+                background-color: #ddd;
+            }
+
+            .tab-content {
+                display: none;
+                padding: 20px;
+                border: 1px solid #ccc;
+                background-color: #fff;
+            }
+
+            .tab-content.active {
+                display: block;
+            }
+        </style> -->
+
+        <!-- <div class="tab">
+            <button class="tab-button active" onclick="openTab(event, 'tab1')">Tab 1</button>
+            <button class="tab-button" onclick="openTab(event, 'tab2')">Tab 2</button>
+            <button class="tab-button" onclick="openTab(event, 'tab3')">Tab 3</button>
+        
+            <div id="tab1" class="tab-content active">
+                <h3>Nội dung của Tab 1</h3>
+                <p>Đây là nội dung của Tab 1</p>
+            </div>
+            <div id="tab2" class="tab-content">
+                <h3>Nội dung của Tab 2</h3>
+                <p>Đây là nội dung của Tab 2</p>
+            </div>
+            <div id="tab3" class="tab-content">
+                <h3>Nội dung của Tab 3</h3>
+                <p>Đây là nội dung của Tab 3</p>
+            </div>
+        </div> -->
+
+        <!-- <script>
+            function openTab(event, tabName) {
+                const tabContents = document.getElementsByClassName("tab-content");
+                for (let i = 0; i < tabContents.length; i++) {
+                    tabContents[i].classList.remove("active");
+                }
+
+                const tabButtons = document.getElementsByClassName("tab-button");
+                for (let i = 0; i < tabButtons.length; i++) {
+                    tabButtons[i].classList.remove("active");
+                }
+
+                document.getElementById(tabName).classList.add("active");
+                event.currentTarget.classList.add("active");
+                // event.currentTarget.classList.toggle("active"); // Nếu có thì xóa đi k có thì add vào
+            }
+        </script> -->
+
+    <!-- Tìm hiểu classList và innerHTML, innerText, textContent -->
+    <!-- <div id="box-test">
+        Xin chào 
+        <b>Nam</b>!
+    </div>
+
+    <script>
+        const boxTest = document.querySelector("#box-test");
+        console.log(boxTest.innerHTML);
+        console.log(boxTest.innerText);
+        console.log(boxTest.textContent);
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,54 @@
+28tech—GIT/GITHUB/VERCEL
+💚Git
+-Là một hệ thống quản lý phiên bản phân tán, cung cấp kho lưu trữ (repository) để chứa toàn bộ lịch sử phiên bản
+-Ưu điểm: tốc độ nhanh, đơn giản, phân tán, phù hợp với dự án lớn nhỏ
+*Các thuật ngữ:
+-Working directory (Thư mục làm việc): Khu vực chứa dự án mà chúng ta làm việc
+-Staging area (Khu vực sắp xếp): Khu vực chứa thông tin thay đổi của các file
+-Repository (Kho lưu trữ): Kho lưu trữ để lưu trữ dữ liệu, lịch sử các phiên bản
+*Các câu lệnh GIT sử dụng phổ biến
+•git - -version: Xem phiên bản Git hiện tại đang được cài trên máy tính
+•git init: Khởi tạo repository (kho lưu trữ) cho dự án, chạy câu lệnh trong thư mục gốc của dự án
+•git status: Để xem trạng thái của những file đã đc thay đổi trong dự án
+•git add . hoặc git add ten_file: Chuyển các file đã thay đổi từ vùng Working sang vùng Staging, Staging area có tác dụng sắp xếp lại những file đã thêm vào
+•git commit -m “Nội dung…”: Chuyển các file từ vùng Staging sang vùng Repository, Repository có tác dụng tạo ra 1 phiên bản mới
+•git log: Xem lại lịch sử các commit, commit mới sẽ hiện bên trên - commit cũ sẽ hiện bên dưới (Nếu hiện dấu : gõ “q” để thoát ra)
+•git show commit_id: Dùng để xem chi tiết một commit
+•git diff: Xem sự thay đổi của một file sau khi chỉnh sửa, điều kiện là file đó vẫn đang ở khu vực Working
+•gitk: Mở dashboard xem trực quan hơn
+•git checkout - - ten_file: Bỏ đi những thay đổi của file, để file đó trở về như lúc ban đầu,áp dụng cho file đang ở vùng Working
+•git reset - -soft commit_id: Chuyển từ trạng thái đã commit về trạng thái trước lúc chạy lệnh git commit, tức là từ Repository về lại Staging
+•git reset - -mixed commit_id: Chuyển từ trạng thái đã commit về trạng thái trước lúc chạy lệnh git add ., tức là từ Repository về lại Working
+🔒Nhánh trong git
+-Các nhánh đại diện cho các phiên bản của một kho lưu trữ tách ra từ dự án chính
+-Nhánh master là nhánh chính, để sau này deploy lên server
+•git branch: Xem danh sách các nhánh
+•git checkout -b ten_nhanh: Tạo một nhánh mới và chuyển sang nhánh đó
+•git checkout ten_nhanh: Chuyển sang nhánh khác
+•git merge ten_nhanh: Để merge nhánh khác vào trong nhánh hiện tại
+•git branch -D ten_nhanh: Để xoá nhánh
+💚GitHub
+-Là một hệ thống quản lý dự án và phiên bản trực tuyến
+-Giúp đồng bộ code của cả nhóm lên một kho lưu trữ chung
+*Đẩy code lần đầu lên GitHub khi project đã có Git
+B1: git remote add origin url_github_https
+B2: git branch -M main
+B3: git push -u origin main
+*Đẩy code lần đầu lên GitHub khi project chưa có Git
+B1: git init
+B2: git add .
+B3: git commit -m “Nội dung commit”
+B4: git branch -M main
+B5: git remote add origin url_github_https
+B6: git push -u origin main 
+*Đẩy code lên GitHub cho các lần tiếp theo
+B1: git add .
+B2: git commit -m “Nội dung commit”
+B3: git push
+*Kéo code từ GitHub về máy:
+git pull origin ten_nhanh
+💚Deploy code lên Vercel
+B1: Chọn “Add New..”
+B2: Chọn “Project”
+B3: Chọn “Add GitHub Account” (nếu chưa có)
+B4: Bấm Deploy

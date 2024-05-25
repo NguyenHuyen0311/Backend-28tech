@@ -1,0 +1,178 @@
+28tech—Javascript (t3)
+🐻Functions (Hàm)
+<1> Kiến thức tổng quan
+-Là một chương trình con giúp thực thi một công việc cụ thể
+-2 loại hàm: 
++Hàm built-in: Hàm có sẵn trong Javascript: console.log(), alert(), prompt()
++Hàm tự định nghĩa: là hàm do chúng ta tự viết ra
+-Cú pháp hàm tự định nghĩa:
+function temHam(thamSo1, thamSo2,…) {}
+-Cú pháp gọi hàm:
+tenHam(doiSo1, doiSo2,…);
+<2> Các loại hàm (các cách viết hàm)
+*Declaration function (Hàm định nghĩa)
++Có tính hoisting (nghĩa là gọi được hàm trước lúc khai báo hàm đó)
++Có đối tượng arguments
++Cú pháp:
+function tenHam(thamSo1, thamSo2,…) {}
+*Arrow function (Hàm mũi tên)
++Không có tính hoisting (Nếu gọi hàm trước lúc khai báo hàm thì sẽ gặp lỗi)
++Không có đối tượng arguments
++Cú pháp:
+var tenHam = (thamSo1, thamSo2,…) => {}
+🐻Try Catch
+-Là một khối lệnh dùng để bắt lỗi chương trình
+-Sử dụng try catch khi muốn chương trình không bị dừng khi một lệnh nào đó bị lỗi
+-Cú pháp: 
+try { //Chạy vào đây đầu tiên}
+catch (error) { //Nếu lỗi chạy vào đây}
+finally { //Luôn luôn chạy vào đây và chạy sau cùng}
+🐻Làm việc với Object nâng cao
+<1> Cách thêm 1 key mới vào object
+-Cú pháp: tenObject.tenKey = value;
+Hoặc: tenObject[“tenKey”] = value;
+<2> Cách xoá 1 key khỏi object
+-Cú pháp: delete tenObject.tenKey;
+🐻Làm việc với Array nâng cao
+<1> forEach()
+-Để duyệt qua mỗi phần tử của mảng và thực hiện một hành động nào đó
+-Cú pháp:
+arr.forEach(function (currentValue, index, array) {
+     //code xử lý
+});
+currentValue: phần tử hiện tại đang được xử lý của array
+index: chỉ số của phần tử hiện tại đang được xử lý của array
+array: mảng hiện tại đang gọi hàm forEach()
+<2> every()
+-Kiểm tra tất cả các phần tử của một mảng thoả mãn một điều kiện gì đó
+-Cú pháp:
+arr.every(function (currentValue, index, array) {
+       //code xử lý
+});
+<3> some()
+-Kiểm tra chỉ cần một phần tử của một mảng thoả mãn một điều kiện gì đó là được
+-Cú pháp:
+arr.some(function (currentValue, index, array) {
+      //code xử lý
+});
+<4> find()
+-Tìm xem trong mảng có giá trị giống với giá trị đang cần tìm không
++Nếu có thì trả về chính phần tử của mảng đó
++Nếu không có thì trả về undefined
+-Chỉ tìm được 1 phần tử trong mảng
+-Cú pháp:
+arr.find(function (currentValue, index, array) {
+       //code xử lý
+});
+<5> filter()
+-Giống hàm find()
+-Tìm được nhiều nhiều phần tử trong mảng
+-Trả về một mảng các phần tử đã tìm được
+-Cú pháp:
+arr.filter(function (currentValue, index, array) {
+       //code xử lý
+});
+<6> map()
+-Lặp qua từng phần tử của mảng và trả về một mảng mới
+-Số lượng phần tử bằng mảng cũ
+-Giá trị trả về được quyết định bởi từ khoá return
+-Cú pháp:
+arr.map(function (currentValue, index, array) {
+      //code xử lý
+});
+<7> reduce()
+-Hàm reduce() duyệt qua từng phần tử trong mảng để tính toán và trả về một giá trị cuối cùng
+-Cú pháp: 
+arr.reduce(function (accumulator, currentValue, currentIndex, array) {
+      //code xử lý
+}, initialValue);
+accumulator: là giá trị của lệnh return cho mỗi lần lặp (biến lưu trữ)
+currentValue: giá trị hiện tại
+currentIndex: chỉ mục của currentValue 
+array: mảng gốc 
+initialValue: giá trị khởi tạo ban đầu (không bắt buộc)
+VD: 
+var courses = [
+     {
+           id: 1,
+           name:  ‘Javascript’,
+           coin: 100
+      },
+
+      {
+           id: 2,
+           name:  ‘HTML, CSS’,
+           coin: 200
+      },
+
+      {
+           id: 3,
+           name:  ‘Ruby’,
+           coin: 220
+      },
+
+      {
+           id: 4,
+           name:  ‘PHP’,
+           coin: 200
+      },
+
+      {
+           id: 5,
+           name:  ‘ReactJS’,
+           coin: 480
+      },
+];
+
+var totalCoin = courses.reduce(function (accumulator, currentValue) {
+     return accumulator + currenValue.coin;
+}, 0); 
+
+console.log(totalCoin);
+
+VD:
+// Flat -“Làm phẳng” mảng từ Depth array “Mảng sâu”
+var depthArray = [1, 2, [3, 4], 5, 6, [7, 8, 9]]
+
+var flatArray = depthArray.reduce(function(flatOutput, depthItem) {
+      return flatOutput.concat(depthItem);
+}, []);
+console.log(flatArray);
+
+VD: 
+// Lấy ra các khoá học đưa vào 1 mảng mới
+var topics = [
+     {
+           topic: “Front-end”,
+           courses:   
+                   {
+                          id: 1, 
+                          title: “HTML, CSS”
+                    },
+
+                   {
+                          id: 2, 
+                          title: “Javascript”
+                    }
+       },
+      {
+           topic: “Back-end”,
+           courses:   
+                   {
+                          id: 1, 
+                          title: “PHP”
+                    },
+
+                   {
+                          id: 2, 
+                          title: “NodeJS”
+                    }
+       },
+];
+
+var newCourses = topics.reduce(function (courses, topic) {
+       return courses.concat(topic.courses);
+}, []);
+
+console.log(newCourses);
+ 

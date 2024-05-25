@@ -1,0 +1,88 @@
+28tech—Javascript NC (t3)
+🥟Storage API
+*localStorage
+-localStorage là kho lưu trữ ở phía người dùng
+-Lưu trữ dữ liệu vô thời hạn, dữ liệu sẽ được lưu trữ cho tới khi người dùng xoá lịch sử duyệt web
+-localStorage có 5 phương thức:
++ setItem(): 
+* Thêm dữ liệu vào localStorage
+* Dữ liệu sẽ được lưu trữ ở dạng key và value
+* Cú pháp:
+localStorage.setItem(key, value);
++ getItem(): 
+* Lấy dữ liệu từ localStorage
+* Truyền vào tên key muốn lấy
+* Nếu không tồn tại thì trả về null
+* Cú pháp:
+localStorage.getItem(key);
++ removeItem(): 
+* Xoá dữ liệu ra khỏi localStorage
+* Truyền vào tên key muốn xoá
+* Cú pháp:
+localStorage.removeItem(key);
++ clear(): 
+* Xoá toàn bộ dữ liệu ra khỏi localStorage
+* Truyền vào tên key muốn xoá
+* Cú pháp:
+localStorage.clear();
++ key(): 
+* Lấy tên key của dữ liệu đang lưu trữ trong localStorage
+* Nếu không có trả ra null
+* Cú pháp:
+localStorage.key(index);
+Trong đó: index là vị trí của key đó 0,1,2, ….
+*sessionStorage
+-sessionStorage là kho lưu trữ theo phiên
+-Lưu trữ dữ liệu cho một phiên làm việc, có nghĩa dữ liệu sẽ bị mất khi bạn tắt brower
+-sessionStorage có 5 phương thức:
++ setItem(): 
+* Thêm dữ liệu vào sessionStorage
+* Dữ liệu sẽ được lưu trữ ở dạng key và value
+* Cú pháp:
+sessionStorage.setItem(key, value);
++ getItem(): 
+* Lấy dữ liệu từ sessionStorage
+* Truyền vào tên key muốn lấy
+* Nếu không tồn tại thì trả về null
+* Cú pháp:
+sessionStorage.getItem(key);
++ removeItem(): 
+* Xoá dữ liệu ra khỏi sessionStorage
+* Truyền vào tên key muốn xoá
+* Cú pháp:
+sessionStorage.removeItem(key);
++ clear(): 
+* Xoá toàn bộ dữ liệu ra khỏi sessionStorage
+* Truyền vào tên key muốn xoá
+* Cú pháp:
+sessionStorage.clear();
++ key(): 
+* Lấy tên key của dữ liệu đang lưu trữ trong sessionStorage
+* Nếu không có trả ra null
+* Cú pháp:
+sessionStorage.key(index);
+Trong đó: index là vị trí của key đó 0,1,2, ….
+🥟So sánh localStorage, sessionStorage, cookies
+ cookies localStorage sessionStorage
+Hết hạn (Expires) Sau khi tắt trình duyệt hoặc đặt thủ công Vô thời hạn Sau khi tắt trình duyệt
+Có thể truy cập/Lưu trữ Server side hoặc Client side Client side Client side
+Kích thước lưu trữ 4 KB 5 MB 10 MB
+🥟Closure (bao đóng)
+-Closure là một hàm ở bên trong hàm khác
+-Nó có thể sử dụng các biến toàn cục, biến cục bộ của hàm cha và biến cục bộ của chính nó
+-Nếu có các biến trùng tên thì closure sẽ ưu tiên theo thứ tự: biến cục bộ của chính nó, biến cục bộ của hàm cha, biến toàn cục
+-Nếu muốn return nhiều hàm closure thì bạn phải sử dụng một object, trong đó mỗi phần tử sẽ là một hàm closure
+-Closure thay đổi được giá trị biến toàn cục lẫn cục bộ
+🥟Default parameters (Tham số mặc định)
+-Tham số lấy giá trị mặc định nếu tham số đó không có giá trị truyền vào
+-Có 2 cách khai báo tham số mặc định
++ Gán mặc định tại vị trí khai báo
++ Gán bên trong function
+🥟Spread syntax
+-Spread syntax (Cú pháp trải ra) để lặp lại các phần tử của mảng (array) hoặc đối tượng (object)
+-Cú pháp: …name
+🥟Rest parameters
+-Rest parameters (Tham số “còn lại”) là tham số đại diện cho những tham số không được khai báo của một function
+-Cú pháp: …name
+🥟Destructuring
+-Destructuring (phá vỡ cấu trúc) để dễ dàng lấy các phần tử của Array hoặc Object

@@ -1,0 +1,202 @@
+28tech—Npm, NodeJS, Express (t1)
+🍥Khái niệm NodeJS
+-NodeJS là mã nguồn mở, dùng để chạy Javascript đa nền tảng
+-Trước đây, Javascript chỉ dùng để chạy ở môi trường là trình duyệt bên phía Front-end
+-Hiện nay, NodeJS sinh ra đóng vai trò làm môi trường để chạy được Javascript ở môi trường khác trình duyệt
+🍥NPM (Node Package Manager)
+*Khái niệm
+-Là một công cụ tạo và quản lý các thư viện lập trình Javascript cho NodeJS
+-Không sử dụng NPM, bạn sẽ cần tải toàn bộ các thư viện một cách thủ công. Sau đó, bạn cần thực hiện nhúng thư viện vào chính dự án của mình. Điều này làm mất nhiều thời gian hơn để hoàn thành
+-Khi sử dụng NPM, bạn chỉ cần 1 dòng lệnh hoàn tất công việc lưu thư viện
+*Cài đặt và sử dụng npm
+* Bước 1: Gõ lệnh npm -v trên cmd để kiểm tra phiên bản 
+* Bước 2: Gõ lệnh npm init, sau đó cứ bấm enter đến hết (Câu lệnh này sẽ tạo ra 1 file có tên là package.json - file này để lưu trữ thông tin (tên package, phiên bản, các dependencies) mà project của bạn sử dụng)
+* Bước 3: Gõ lệnh npm install [tên package] hoặc npm i [tên package] để cài đặt package vào dự án
+*Một số thuộc tính trong package.json
+-name: tên gói thư viện
+-version: phiên bản gói
+-description: phần mô tả về gói thư viện
+-homepage: trang chủ của gói
+-author: tác giả
+-contributors: tên người đóng góp cho package
+-dependencies: danh sách các gói phụ thuộc, tự động được cài theo
+-repository: loại repository và url của package, thông thường là link git
+-main: index.js (file chính của dự án)
+-keywords: các từ khoá
+*Một số câu lệnh npm khác
+-npm update [tên_package]: Để update một package. Hạn chế dùng, chỉ dùng khi thực sự hiểu về package bạn đang muốn update
+-npm uninstall [tên_package]: Gỡ cài đặt package
+🍥ExpressJS
+*Khái niệm ExpressJS
+-ExpressJS là một framework để xây dựng các ứng dụng web trong NodeJS
+-ExpressJS giúp quá trình xây dựng server trở nên đơn giản với nhiều tính năng được xây dựng sẵn
+*Ví dụ Hello World!
+* Bước 1: Tạo một folder vi-du-01 và chạy npm init
+* Bước 2: Cài đặt express: npm i express
+* Bước 3: Tạo file index.js và thêm code
+* Bước 4: Bật Terminal lên và khởi chạy bằng câu lệnh node index.js
+*Cài Nodemon
+-Nodemon là một công cụ phục vụ cho NodeJS
+-Giúp tự động khởi động lại ứng dụng khi phát hiện các thay đổi của tệp
+-Hướng dẫn cài đặt:
+* Bước 1: Chạy câu lệnh npm i --save-dev nodemon
+* Bước 2: Thêm dòng "start": "nodemon --inspect index.js" vào mục script trong file package.json
+* Bước 3: Chạy npm start
+*Sử dụng Routing cơ bản
+*SPA và MPA
+-Multiple Page Application là gì?
++ MPA là khi người dùng truy cập vào các trang con trên web, thì server sẽ xử lý và trả về toàn bộ trang web và web đó sẽ được load lại mới hoàn toàn
++ Ví dụ: shopee.vn, tiki.vn, sendo.vn…
+-Single Page Application là gì?
++ SPA là khi người dùng truy cập các trang con trên web, website sẽ chỉ load lại những phần giao diện thay đổi, những giao diện không thay đổi sẽ không bị load lại
++ Ví dụ: youtube.com, facebook.com, gmail.com,…
+*Template Engines
+-Khái niệm:
++ Template Engines là công cụ giúp tách mã HTML thành các phần nhỏ hơn
++ Để sử dụng lại trên nhiều file HTML
+-Một số Template Engines phổ biến
++ PUG
++ EJS
++ Handlebars
+-Sử dụng Pug:
++ Link tài liệu: https://pugjs.org/api/getting-started.html
+*Static files & CSS
+*Sử dụng Bootstrap 4
+🍥PUG
+* Doctype (Kiểu tài liệu): doctype html ->  <!DOCTYPE html>
+* Tags (Thẻ): 
++ h1 Nội dung thẻ h1 -> <h1>Nội dung thẻ h1</h1>
++ h2 Nội dung thẻ h2 -> <h2>Nội dung thẻ h2</h2>
++ p Nội dung thẻ p -> <p>Nội dung thẻ p</p>
++ ul
+      li Item 1
+      li Item 2
+      li Item 3
+-> <ul>
+         <li>Item 1</li>
+         <li>Item 2</li>
+         <li>Item 3</li>
+</ul>
+* Plain Text (Văn bản)
++ p Nội dung thẻ p! 
+-> <p>Nội dung thẻ p!</p>
++ p Nội dung <b>thẻ p</b>! 
+-> <p>Nội dung <b>thẻ p</b>!</p>
++ p Nội dung <i>thẻ p</i>! 
+-> <p>Nội dung <i>thẻ p</i>!</p>
++ p Nội dung <b><i>thẻ p</i></b>!
+-> <p>Nội dung <b><i>thẻ p</i></b>!</p>
++ p
+      | Xin chào mọi
+      | người, tôi tên là Huyền
+-> <p>Xin chào mọi người, tôi tên là Huyền</p>
++ p.
+      Xin chào mọi người
+      Tôi tên là Huyền
+-> <p>Xin chào mọi người. Tôi tên là Huyền</p>
+* Attributes (Thuộc tính)
++ button.btn.btn-success#button-test Click Me 1
+-><button class=“btn btn-success” id=”button-test”>Click Me 1<button>
++ button(class=“btn btn-success”, id=“button-test”) Click Me 2
+-><button class=“btn btn-success” id=”button-test”>Click Me 2<button>
++ button(class=“btn btn-success” id=“button-test”) Click Me 
+-><button class=“btn btn-success” id=”button-test”>Click Me 3<button>
+* Comments (Chú thích)
+// Đây là đoạn comment được biên dịch thành mã HTML
+//- Đây là đoạn comment không được biên dịch thành mã HTML
+-> <!- - Đây là đoạn comment được biên dịch thành mã HTML - ->
+* Variable (Biến)
+- var name = “Nguyễn Thị Huyền”;
+- var phone = “0966556026”;
+- var age = 20;
+div(class=“info”)
+    p= name
+    p= phone
+    p= age
+-> <div class=“info”>
+          <p>Nguyễn Thị Huyền</p>
+          <p>0966556026</p>
+          <p>20</p>
+
+div(class=“info”)
+    p #{name}
+    p #{phone}
+    p #{age}
+-> <div class=“info”>
+          <p>Nguyễn Thị Huyền</p>
+          <p>0966556026</p>
+          <p>20</p>
+
+div(class=“info”)
+    p Họ tên: #{name}
+    p Điện thoại: #{phone}
+    p Tuổi: #{age}
+-> <div class=“info”>
+          <p>Họ tên: Nguyễn Thị Huyền</p>
+          <p>Điện thoại: 0966556026</p>
+          <p>Tuổi: 20</p>
+
+- var htmlLink = “<a href=‘https://daca.vn’>Daca.vn</a>”;
+div(class=“link”)
+   p= htmlLink
+-> <div class=“link”><p>&lt;a href=‘https://daca.vn/‘&gt;Daca.vn&lt;/a&gt;</p></div>
+
+div(class=“link”)
+   p #{htmlLink}
+-> <div class=“link”><p>&lt;a href=‘https://daca.vn/‘&gt;Daca.vn&lt;/a&gt;</p></div>
+
+div(class=“link”)
+   p !{htmlLink}
+-> <div class=“link”><p><a href=‘https://daca.vn’>Daca.vn</a></p></div>
+  
+* Conditionals (Điều kiện)
+-
+   var infoUser = {
+        name: “Nguyễn Thị Huyền”,
+        phone: “0966556026”,
+        age: 20
+   };
+div(class=“info”)
+   p Email: #{infoUser.email}
+
+   if infoUser.email
+       p Email: #{infoUser.email}
+-> <div class=“info”>
+         <p>Email: </p>
+     </div>
+* Case (Trường hợp)
+//- statusAccount: “initial”, “active”, “inactive”
+- var statusAccount = “initial”;
+
+case statusAccount
+    when “initial”
+        p Chờ duyệt
+    when “active”
+        p Đang hoạt động
+    when “inactive”
+        p Đang bị khoá
+    default
+        p Không có
+-> <p>Chờ duyệt</p>
+* Iteration (Vòng lặp)
+-
+   var listUser = [
+          “Le Van A”,
+          “Nguyen Thi B”,
+          “Do Van C”
+   ];
+
+ul
+    each item, index in listUser
+        li #{index+1}. #{item}
+-> <ul>
+         <li>1. Le Van A</li>
+         <li>2. Nguyen Thi B</li>
+         <li>3. Do Van C</li>
+      </ul>
+* Template Inheritance (Kế thừa mẫu)
+Dùng để tạo ra một bộ khung dùng chung được ở nhiều trang
+* Includes
+Dùng để nhúng nội dung của 1 file PUG vào 1 file PUG khác
+* Mixins
+Dùng để tạo ra các khối có thể tái sử dụng

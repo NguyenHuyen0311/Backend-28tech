@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- localStorage & sessionStorage -->
+        <!-- <style>
+            body.dark {
+                background-color: #000;
+            }
+
+            body.dark h2 {
+                color: #fff;
+            }
+        </style>
+        
+        <h2>Nội dung...</h2>
+
+        <button id="change-mode">Sáng/Tối</button> -->
+
+    
+        <!-- Câu 2: Lưu data của ứng dụng Todo List vào localStorage
+         Đề bài: 
+            Tạo ra một ứng dụng todo, có chức năng thêm mới todo và xóa todo
+            Danh sách todo lưu vào localStorage để vẽ ra giao diện
+        -->
+
+        <h1>Todo List</h1>
+
+        <input type="text" placeholder="Thêm công việc....." id="taskInput">
+        <button id="button">Thêm</button> 
+        
+        <ul id="taskList"></ul>
+
+        <script>
+            let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+            // Xóa công việc
+            function deleteTask(index) {
+                tasks.splice(index, 1);
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+                displayTasks();
+            }
+
+            // Hiển thị danh sách công việc
+            function displayTasks() {
+                const taskList = document.getElementById("taskList");
+                taskList.innerHTML = "";
+                for (let i = 0; i < tasks.length; i++) {
+                    const li = document.createElement("li");
+                    li.textContent = tasks[i];
+
+                    li.setAttribute("data-index", i); // Thêm thuộc tính data-index để xác định index của công việc
+                    const deleteButton = document.createElement("button");
+                    deleteButton.textContent = "Xóa";
+                    deleteButton.addEventListener("click", function() {
+                        const index = parseInt(this.parentElement.getAttribute("data-index"));
+                        deleteTask(index);
+                    });
+                    li.appendChild(deleteButton);
+
+                    taskList.appendChild(li);
+                }
+            }
+
+            // Thêm công việc mới
+            function addTask() {
+                const taskInput = document.getElementById("taskInput");
+                const task = taskInput.value;
+                if (task !== "") {
+                    tasks.push(task);
+                    localStorage.setItem("tasks", JSON.stringify(tasks));
+                    taskInput.value = "";
+                    displayTasks();
+                }
+            } 
+
+            // Hiển thị danh sách công việc ban đầu
+                displayTasks();
+
+            // Lắng nghe sự kiện click vào nút Thêm
+            const button = document.querySelector("#button");
+            button.addEventListener("click", addTask);
+        </script>
+
+    <script src="nc_t3.js"></script>
+</body>
+</html>
