@@ -161,6 +161,22 @@ if(formChangeMulti) {
         );
         // console.log(inputsChecked)
 
+        // console.log(e.target.elements.type.value);
+
+        const typeChange = e.target.elements.type.value;
+
+        // Nếu chọn xóa tất cả 
+        if(typeChange == "delete-all") {
+            const isConfirm = confirm("Bạn có chắc muốn xóa những bản ghi này không?");
+            // console.log(isConfirm);
+
+            // Nếu không xóa
+            if(!isConfirm) {
+                return;
+            }
+        }
+
+        // Nếu chọn có xóa
         if(inputsChecked.length > 0) {
             let ids = [];
             const inputIds = formChangeMulti.querySelector("input[name='ids']"); // Lấy id của ô input
