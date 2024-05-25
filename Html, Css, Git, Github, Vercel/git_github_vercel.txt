@@ -45,6 +45,9 @@ B6: git push -u origin main
 B1: git add .
 B2: git commit -m “Nội dung commit”
 B3: git push
+*Cấu hình Git để xử lý tự động các ký tự xuống dòng
+- Đối với tất cả các dự án: git config --global core.autocrlf true
+- Đối với một dự án cụ thể: git config core.autocrlf true
 *Kéo code từ GitHub về máy:
 git pull origin ten_nhanh
 💚Deploy code lên Vercel
