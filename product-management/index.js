@@ -6,6 +6,11 @@ const bodyParser = require('body-parser');
 // Thêm các phương thức khác
 const methodOverride = require('method-override');
 
+// Thông báo
+const flash = require('express-flash');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+
 // ENV
 require("dotenv").config();
 
@@ -25,6 +30,11 @@ const port = process.env.PORT;
 // Cấu hình PUG
 app.set("views", "./views");
 app.set("view engine", "pug");
+
+// Flash
+app.use(cookieParser('huyen'));
+app.use(session({ cookie: { maxAge: 60000 }}));
+app.use(flash());
 
 // Dùng được file tĩnh
 app.use(express.static("public"));
