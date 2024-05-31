@@ -248,3 +248,23 @@ if(showAlert) {
         showAlert.classList.add("alert-hidden");
     }); // click x là ẩn
 }
+
+// Upload Image
+const uploadImage = document.querySelector("[upload-image]");
+// console.log(uploadImage);
+
+if(uploadImage) {
+    const uploadImageInput = uploadImage.querySelector("[upload-image-input]");
+    const uploadImagePreview = uploadImage.querySelector("[upload-image-preview]");
+
+    // console.log(uploadImageInput)
+    // console.log(uploadImagePreview)
+
+    uploadImageInput.addEventListener("change", (e) => {
+        // console.log(e);
+        if(e.target.files.length) {
+            const image = URL.createObjectURL(e.target.files[0]); // Tạo ra URL tạm thời từ ảnh
+            uploadImagePreview.src = image; // Gán đường dẫn
+        }
+    });
+}

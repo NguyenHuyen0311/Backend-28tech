@@ -8,79 +8,83 @@ const paginationHelper = require("../../helpers/pagination");
 
 // [GET] /admin/products
 module.exports.index = async (req, res) => {
-    const filterStatus = filterStatusHelper(req.query); // Bộ lọc
-    let objectSearch = searchHelper(req.query); // Tìm kiếm
+    try {
+        const filterStatus = filterStatusHelper(req.query); // Bộ lọc
+        let objectSearch = searchHelper(req.query); // Tìm kiếm
 
-    // console.log(objectSearch);
+        // console.log(objectSearch);
 
-    let find = {
-        deleted: false
-    };
+        let find = {
+            deleted: false
+        };
 
-    if(req.query.status) {
-        // Lọc sản phẩm theo trạng thái
-        find.status = req.query.status;
-    }
-
-    // Tìm kiếm theo từ khóa
-    if(req.query.keyword) {
-        find.title = objectSearch.regex;
-    }
-
-    // Pagination (Phân trang) 
-    let initPagination = {
-        currentPage: 1,
-        limitItem: 4
-    };
-    // Đếm sản phẩm
-    const countProducts = await Product.countDocuments(find);
-    // console.log(countProducts);
-
-    const objectPagination = paginationHelper(initPagination, req.query, countProducts);
-
-    const products = await Product.find(find)
-        .sort({ position: "desc" }) // sắp xếp giảm dần
-        .limit(objectPagination.limitItem)
-        .skip(objectPagination.skip);
-
-    // res.render("admin/pages/products/index", {
-    //     pageTitle: "Danh sách sản phẩm",
-    //     products: products,
-    //     filterStatus: filterStatus,
-    //     keyword: objectSearch.keyword,
-    //     pagination: objectPagination
-    // });
-
-
-    // Tìm sản phẩm không được tìm thấy ở trang nào đó thì trở lại trang 1 và vẫn giữ nguyên keyword trên url
-    // console.log(products);
-
-    if(products.length > 0) {
-        res.render("admin/pages/products/index", {
-            pageTitle: "Danh sách sản phẩm",
-            products: products,
-            filterStatus: filterStatus,
-            keyword: objectSearch.keyword,
-            pagination: objectPagination
-        });
-    } else {
-        // console.log(req.query);
-        let stringQuery = "";
-
-        // Nối chuỗi keyword trên url
-        for (const key in req.query) {
-            // console.log(key);
-            if(key != "page") {
-                stringQuery += `&${key}=${req.query[key]}`;
-            }
+        if(req.query.status) {
+            // Lọc sản phẩm theo trạng thái
+            find.status = req.query.status;
         }
-        // console.log(stringQuery);
-        const href = `${req.baseUrl}?page=1&${stringQuery}`;
-        // console.log(href);
 
-        // Nếu không tìm thấy sản phẩm thì quay về trang 1
-        // res.redirect(`/${systemConfig.prefixAdmin}/products`);
-        res.redirect(href);
+        // Tìm kiếm theo từ khóa
+        if(req.query.keyword) {
+            find.title = objectSearch.regex;
+        }
+
+        // Pagination (Phân trang) 
+        let initPagination = {
+            currentPage: 1,
+            limitItem: 4
+        };
+        // Đếm sản phẩm
+        const countProducts = await Product.countDocuments(find);
+        // console.log(countProducts);
+
+        const objectPagination = paginationHelper(initPagination, req.query, countProducts);
+
+        const products = await Product.find(find)
+            .sort({ position: "desc" }) // sắp xếp giảm dần
+            .limit(objectPagination.limitItem)
+            .skip(objectPagination.skip);
+
+        // res.render("admin/pages/products/index", {
+        //     pageTitle: "Danh sách sản phẩm",
+        //     products: products,
+        //     filterStatus: filterStatus,
+        //     keyword: objectSearch.keyword,
+        //     pagination: objectPagination
+        // });
+
+
+        // Tìm sản phẩm không được tìm thấy ở trang nào đó thì trở lại trang 1 và vẫn giữ nguyên keyword trên url
+        // console.log(products);
+
+        if(products.length > 0 || countProducts == 0) {
+            res.render("admin/pages/products/index", {
+                pageTitle: "Danh sách sản phẩm",
+                products: products,
+                filterStatus: filterStatus,
+                keyword: objectSearch.keyword,
+                pagination: objectPagination
+            });
+        } else {
+            // console.log(req.query);
+            let stringQuery = "";
+
+            // Nối chuỗi keyword trên url
+            for (const key in req.query) {
+                // console.log(key);
+                if(key != "page") {
+                    stringQuery += `&${key}=${req.query[key]}`;
+                }
+            }
+            // console.log(stringQuery);
+            const href = `${req.baseUrl}?page=1&${stringQuery}`;
+            // console.log(href);
+
+            // Nếu không tìm thấy sản phẩm thì quay về trang 1
+            // res.redirect(`/${systemConfig.prefixAdmin}/products`);
+            res.redirect(href);
+        }
+    } catch (error) {
+        res.redirect("back");
     }
 }
 
@@ -166,4 +170,43 @@ module.exports.deleteItem = async (req, res) => {
     req.flash("success", `Xóa sản phẩm thành công!`); // Hiển thị thông báo
 
     res.redirect("back");
+}
+
+// [GET] /admin/products/create
+module.exports.create = async (req, res) => {
+    res.render("admin/pages/products/create", {
+        pageTitle: "Tạo mới sản phẩm"
+    });
+}
+
+// [POST] /admin/products/create
+module.exports.createPost = async (req, res) => {
+    // console.log(req.body);
+
+    // Thay đổi type dữ liệu
+    req.body.price = parseInt(req.body.price);
+    req.body.discountPercentage = parseInt(req.body.discountPercentage);
+    req.body.stock = parseInt(req.body.stock);
+
+    if(req.body.position == "") {
+        // Đếm số lượng sản phẩm trong Mongo
+        const countProducts = await Product.countDocuments();
+        // console.log(countProducts);
+        req.body.position = countProducts + 1;
+    } else {
+        req.body.position = parseInt(req.body.position);
+    }
+    // console.log(req.body);
+
+    // Lấy đường dẫn ảnh
+    if(req.file && req.file.filename) {
+        req.body.thumbnail = `/uploads/${req.file.filename}`;
+    }
+    // console.log(req.file);
+
+    // Tạo mới sản phẩm và lưu vào database
+    const product = new Product(req.body);
+    await product.save();
+
+    res.redirect(`/${systemConfig.prefixAdmin}/products`);
 }
