@@ -44,4 +44,7 @@ router.patch(
     controller.editPatch
 );
 
+// Phương thức get chi tiết sản phẩm
+router.get("/detail/:id", controller.detail);
+
 module.exports = router;
