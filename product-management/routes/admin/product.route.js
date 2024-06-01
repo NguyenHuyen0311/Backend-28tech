@@ -33,4 +33,15 @@ router.post(
     controller.createPost
 );
 
+// Phương thức edit sửa sản phẩm
+router.get("/edit/:id", controller.edit);
+
+// Phương thức patch sửa mới sản phẩm
+router.patch(
+    "/edit/:id", 
+    upload.single('thumbnail'), 
+    validate.createPost,
+    controller.editPatch
+);
+
 module.exports = router;

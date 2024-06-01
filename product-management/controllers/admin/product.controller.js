@@ -198,7 +198,7 @@ module.exports.createPost = async (req, res) => {
     }
     // console.log(req.body);
 
-    // Lấy đường dẫn ảnh
+    // Lấy đường dẫn ảnh và upload ảnh
     if(req.file && req.file.filename) {
         req.body.thumbnail = `/uploads/${req.file.filename}`;
     }
@@ -209,4 +209,43 @@ module.exports.createPost = async (req, res) => {
     await product.save();
 
     res.redirect(`/${systemConfig.prefixAdmin}/products`);
+}
+
+// [GET] /admin/products/edit/:id
+module.exports.edit = async (req, res) => {
+    const id = req.params.id;
+    // console.log(id);
+
+    const product = await Product.findOne({ 
+        _id: id,
+        deleted: false
+    });
+    // console.log(product);
+
+    res.render("admin/pages/products/edit", {
+        pageTitle: "Chỉnh sửa sản phẩm",
+        product: product
+    });
+}
+
+// [PATCH] /admin/edit/:id
+module.exports.editPatch = async (req, res) => {
+    const id = req.params.id;
+
+    // Thay đổi type dữ liệu
+    req.body.price = parseInt(req.body.price);
+    req.body.discountPercentage = parseInt(req.body.discountPercentage);
+    req.body.stock = parseInt(req.body.stock);
+    req.body.position = parseInt(req.body.position);
+
+    // Lấy đường dẫn ảnh và upload ảnh
+    if(req.file && req.file.filename) {
+        req.body.thumbnail = `/uploads/${req.file.filename}`;
+    }
+
+    await Product.updateOne({ _id: id }, req.body);
+
+    req.flash("success", "Cập nhật sản phẩm thành công!");
+
+    res.redirect("back");
 }
