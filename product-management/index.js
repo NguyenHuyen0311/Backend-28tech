@@ -28,7 +28,7 @@ const app = express();
 const port = process.env.PORT;
 
 // Cấu hình PUG
-app.set("views", "./views");
+app.set("views", `${__dirname}/views`);
 app.set("view engine", "pug");
 
 // Flash
@@ -37,7 +37,7 @@ app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
 
 // Dùng được file tĩnh
-app.use(express.static("public"));
+app.use(express.static(`${__dirname}/public`));
 
 // Dùng đè phương thức
 app.use(methodOverride("_method"));
